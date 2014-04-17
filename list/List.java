@@ -3,7 +3,7 @@
 package list;
 
 /**
- * A List is a generic mutable list ADT which stores objects of only one kind.
+ * A List is a generic mutable list ADT which stores objects of only one type.
  */
 
 public abstract class List<T> {
