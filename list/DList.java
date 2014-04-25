@@ -7,13 +7,13 @@ package list;
  * circularly-linked and emplysa  sentinel node at the head of the list.
  */
 
-public class DList extends List {
+public class DList<T> extends List<T> {
 
 	/**
 	 * size (inherited) is the number of items in the list
 	 * head references the sentinel node
 	 */
-	protected DListNode head;
+	protected DListNode<T> head;
 
 	/**
 	 * newNode() calls the DListNode constructor, but can be overridden to
@@ -23,16 +23,16 @@ public class DList extends List {
 	 * @param  prev the node previous to this node
 	 * @param  next the node following this node
 	 */
-	protected DListNode newNode(Object item, DList list,
-                              DListNode prev, DListNode next) {
-    return new DListNode(item, list, prev, next);
+	protected DListNode<T> newNode(T item, DList<T> list,
+                              DListNode<T> prev, DListNode<T> next) {
+    return new DListNode<T>(item, list, prev, next);
   }
 
   /**
    * DList() constructs for an empty DList.
    */
   public DList() {
-    head = newNode(0, null, null, null);
+    head = newNode((T) null, (DList<T>) null, (DListNode<T>) null, (DListNode<T>) null);
     head.next = head.prev = head;
   }
 
@@ -40,7 +40,7 @@ public class DList extends List {
    * insertFront() inserts an item at the front of this DList.
    * @param item is the item to be inserted.
    */
-  public void insertFront(Object item) {
+  public void insertFront(T item) {
     head.next = newNode(item, this, head, head.next);
     head.next.next.prev = head.next;
     size++;
@@ -50,7 +50,7 @@ public class DList extends List {
    * insertBack() inserts an item at the back of this DList.
    * @param item is the item to be inserted.
    */
-  public void insertBack(Object item) {
+  public void insertBack(T item) {
     head.prev = newNode(item, this, head.prev, head);
     head.prev.prev.next = head.prev;
   }

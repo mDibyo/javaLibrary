@@ -13,7 +13,7 @@ public abstract class ListNode<T> {
    * list references the List that contains this node.
    */
   protected T item;
-  protected List list;
+  protected List<T> list;
 
 	/**
    * isValidNode returns true if this node is valid; false otherwise.
