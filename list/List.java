@@ -47,7 +47,7 @@ public abstract class List<T> {
    * @return a ListNode at the front of this List.
    * @exception ListEmptyException if this List is empty.
    */
-  public abstract ListNode front() throws ListEmptyException;
+  public abstract ListNode<T> front() throws ListEmptyException;
 
   /**
    * back() returns the node at the back of this List.  If the List is
@@ -55,7 +55,7 @@ public abstract class List<T> {
    * @return a ListNode at the back of this List.
    * @exception ListEmptyException if this list is empty. 
    */
-  public abstract ListNode back() throws ListEmptyException;
+  public abstract ListNode<T> back() throws ListEmptyException;
 
   /**
    * toString() returns a String representation of this List.

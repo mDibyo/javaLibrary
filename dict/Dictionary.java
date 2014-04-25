@@ -52,7 +52,7 @@ public interface Dictionary<K, V> {
    * @return an entry containing the key and an associated value, or null if
    *          no entry contains the specified key.
    */
-  public Entry<K, V> remove(V key);
+  public Entry<K, V> remove(K key);
 
   /**
    * Removes all entries from the dictionary.

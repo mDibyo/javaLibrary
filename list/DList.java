@@ -61,7 +61,7 @@ public class DList<T> extends List<T> {
    * attempt to use it will cause an exception.
    * @return a ListNode at the front of this DList.
    */
-  public ListNode front() {
+  public ListNode<T> front() {
     return head.next;
   }
 
@@ -71,7 +71,7 @@ public class DList<T> extends List<T> {
    * attempt to use it will cause an exception.  (The sentinel is "invalid".)
    * @return a ListNode at the back of this DList.
    */
-  public ListNode back() {
+  public ListNode<T> back() {
     return head.prev;
   }
 
@@ -81,11 +81,13 @@ public class DList<T> extends List<T> {
    */
   public String toString() {
     String result = "[  ";
-    DListNode current = head.next;
-    while (current != head) {
-      result = result + current.item + "  ";
-      current = current.next;
-    }
+    try {
+    	ListNode<T> current = head.next();
+	    while (current != head) {
+	      result = result + current.item + "  ";
+	      current = current.next();
+	    }
+    } catch (InvalidNodeException e) {}
     return result + "]";
   }
 

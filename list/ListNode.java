@@ -59,7 +59,7 @@ public abstract class ListNode<T> {
    * @return the node following this node.
    * @exception InvalidNodeException if this node is not valid.
    */
-  public abstract ListNode next() throws InvalidNodeException;
+  public abstract ListNode<T> next() throws InvalidNodeException;
 
   /**
    * prev() returns the node preceding this node.  If this node is invalid,
@@ -67,7 +67,7 @@ public abstract class ListNode<T> {
    * @return the node preceding this node.
    * @exception InvalidNodeException if this node is not valid.
    */
-  public abstract ListNode prev() throws InvalidNodeException;
+  public abstract ListNode<T> prev() throws InvalidNodeException;
 
   /**
    * insertAfter() inserts an item immediately following this node.  If this

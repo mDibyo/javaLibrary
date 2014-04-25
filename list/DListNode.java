@@ -48,7 +48,7 @@ public class DListNode<T> extends ListNode<T> {
    * @return the node following this node.
    * @exception InvalidNodeException if this node is not valid.
    */
-  public ListNode next() throws InvalidNodeException {
+  public ListNode<T> next() throws InvalidNodeException {
     if (!isValidNode()) {
       throw new InvalidNodeException("next() called on invalid node");
     }
@@ -62,7 +62,7 @@ public class DListNode<T> extends ListNode<T> {
    * @return the node preceding this node.
    * @exception InvalidNodeException if this node is not valid.
    */
-  public ListNode prev() throws InvalidNodeException {
+  public ListNode<T> prev() throws InvalidNodeException {
     if (!isValidNode()) {
       throw new InvalidNodeException("prev() called on invalid node");
     }

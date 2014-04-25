@@ -12,14 +12,14 @@ import list.*;
  * Integer.MIN_VALUE and Integer.MAX_VALUE. 
  **/
 
-public class HashTableChained<K, V> implements Dictionary {
+public class HashTableChained<K, V> implements Dictionary<K, V> {
 
   /**
    * @param  table the hash table built with a Linked List implementation
    * @param  tableSize number of buckets in the table
    * @param  size number of entries in the table
    */
-  private List<Entry>[] table;
+  private List<Entry <K, V>>[] table;
   private int tableSize;
   private int size;
 
@@ -32,9 +32,9 @@ public class HashTableChained<K, V> implements Dictionary {
     while (!isPrime(tableSize)) {
       tableSize ++;
     }
-    table = new DList<Entry>[tableSize];
+    table = new DList[tableSize];
     for (int i = 0; i < tableSize; i++) {
-      table[i] = new DList<Entry>();
+      table[i] = new DList<Entry<K, V>>();
     }
     size = 0;
   }
@@ -44,9 +44,9 @@ public class HashTableChained<K, V> implements Dictionary {
    */
   public HashTableChained() {
     tableSize = 101;
-    table = new DList<Entry>[tableSize];
+    table = new DList[tableSize];
     for (int i = 0; i < tableSize; i++) {
-      table[i] = new DList<Entry>();
+      table[i] = new DList<Entry<K, V>>();
     }
     size = 0;
   }
@@ -106,7 +106,7 @@ public class HashTableChained<K, V> implements Dictionary {
   public Entry<K, V> insert(K key, V value) {
     try {
       int hash = key.hashCode();
-      Entry entry = new Entry<K, V>();
+      Entry<K, V> entry = new Entry<K, V>();
       entry.key = key;
       entry.value = value;
       table[compFunction(hash)].insertFront(entry);
@@ -128,9 +128,9 @@ public class HashTableChained<K, V> implements Dictionary {
   public Entry<K, V> find(K key) {
     try {
       int hash = key.hashCode();
-      ListNode node = table[compFunction(hash)].front();
+      ListNode<Entry<K, V>> node = table[compFunction(hash)].front();
       if (node.isValidNode()) {
-        return (Entry) node.item();
+        return (Entry<K, V>) node.getItem();
       }
     } catch (Exception e) {
       System.out.println("Unhashable key: " + e);
@@ -150,9 +150,9 @@ public class HashTableChained<K, V> implements Dictionary {
   public Entry<K, V> remove(K key) {
     try {
       int hash = key.hashCode();
-      ListNode node = table[compFunction(hash)].front();
+      ListNode<Entry<K, V>> node = table[compFunction(hash)].front();
       if (node.isValidNode()) {
-        Entry<K, V> entry = (Entry<K, V>) node.item();
+        Entry<K, V> entry = (Entry<K, V>) node.getItem();
         node.remove();
         return entry;
       }
@@ -167,7 +167,7 @@ public class HashTableChained<K, V> implements Dictionary {
    */
   public void makeEmpty() {
     for (int i = 0; i < tableSize; i++) {
-      table[i] = new DList<Entry>();
+      table[i] = new DList<Entry<K, V>>();
     }
   }
 
