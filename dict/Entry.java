@@ -6,16 +6,16 @@ package dict;
  * A class for dictionary entries.
  */
 
-public class Entry {
+public class Entry<K, V> {
 
-  protected Object key;
-  protected Object value;
+  protected K key;
+  protected V value;
 
-  public Object key() {
+  public K key() {
     return key;
   }
 
-  public Object value() {
+  public V value() {
     return value;
   }
 
